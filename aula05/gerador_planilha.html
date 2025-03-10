@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha Dinâmica</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+
+function criarPlanilha(rows, cols) 
+{
+    const container = document.getElementById('spreadsheet');
+    const table = document.createElement('table');
+
+    // Cria o cabeçalho da tabela
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+
+    let th = document.createElement('th');
+    th.textContent = ''; // Canto superior esquerdo vazio
+    headerRow.appendChild(th);
+
+    th = document.createElement('th');
+    th.textContent = String.fromCharCode(64 + 1); // Colunas A, B, C, etc.
+    headerRow.appendChild(th);
+
+    th = document.createElement('th');
+    th.textContent = String.fromCharCode(64 + 2); // Colunas A, B, C, etc.
+    headerRow.appendChild(th);
+
+    table.appendChild(thead);
+
+    // Cria o corpo da tabela
+    const tbody = document.createElement('tbody');
+
+    
+    for (let i = 1; i <= rows; i++) {
+        const row = document.createElement('tr');
+        // Adiciona o número da linha
+        const rowHeader = document.createElement('th');
+        rowHeader.textContent = i;
+        row.appendChild(rowHeader);
+
+        // Adiciona as células
+        for (let j = 1; j <= cols; j++) {
+            const cell = document.createElement('td');
+            cell.setAttribute('contenteditable', 'true'); // Permite edição
+            row.appendChild(cell);
+        }
+        tbody.appendChild(row);
+    }
+    table.appendChild(tbody);
+
+    container.appendChild(table);
+}
+
+// Exemplo de uso: cria uma planilha com 10 linhas e 5 colunas
+criarPlanilha(2, 2);
+    </script>
+</head>
+<body>
+    <h1>Planilha Dinâmica</h1>
+    <div id="spreadsheet"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
