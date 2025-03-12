@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02 - JS validação</title>
+    <title>08 - JS validação</title>
     <style>
         body {
             background-color: #c6cbebc8;
@@ -40,7 +40,7 @@
 <body>
 
     <h1>Cadastro de Cliente</h1>
-    <form id="formCadastro" onsubmit="return validarFormulario()">
+    <form id="formCadastro" onsubmit="return validarFormulario()" action="09 - ProcessaForm.php">
         <label for="nome_cliente">Nome Completo:</label>
         <input type="text" id="nome_cliente" name="nome_cliente" placeholder="Digite seu nome completo">
 
@@ -60,7 +60,8 @@
     </form>
 
     <script>
-        function validarFormulario() {
+        function validarFormulario() 
+        {
             // Resetando mensagens de erro e removendo classes de erro
             resetarErros();
 
@@ -74,8 +75,47 @@
             // Variável de controle para verificar se o formulário é válido
             let formularioValido = true;
             
-            //Implemente aqui a validação
+            let nome = document.getElementById("nome_cliente");
+            // Validação do campo Nome Completo (mínimo de 5 e máximo de 100 caracteres)
+            if (nome.value.length < 5 || nome.value.length > 100) {
+                formularioValido = false;
+                nome.classList.add("erro");
+                nome.value = "";  // Limpa o campo
+                nome.placeholder = "Nome deve ter entre 5 e 100 caracteres.";
+            }
 
+            // Validação do campo E-mail (obrigatório e formato correto)
+            if (!email.value || !validarEmail(email.value)) {
+                formularioValido = false;
+                email.classList.add("erro");
+                email.value = "";  // Limpa o campo
+                email.placeholder = "Insira um e-mail válido.";
+            }
+
+            // Validação do campo Telefone (obrigatório, mínimo de 10 caracteres)
+            if (telefone.value.length < 10) {
+                formularioValido = false;
+                telefone.classList.add("erro");
+                telefone.value = "";  // Limpa o campo
+                telefone.placeholder = "Telefone deve ter no mínimo 10 dígitos.";
+            }
+            
+            let endereco = document.getElementById("endereco");
+            // Validação do campo Endereço (mínimo de 10 caracteres)
+            if (endereco.value.length < 10) {
+                formularioValido = false;
+                endereco.classList.add("erro");
+                endereco.value = "";  // Limpa o campo
+                endereco.placeholder = "Endereço deve ter no mínimo 10 caracteres.";
+            }
+
+            // Validação do campo CPF (exatamente 11 caracteres numéricos)
+            if (!validarCPF(cpf.value)) {
+                formularioValido = false;
+                cpf.classList.add("erro");
+                cpf.value = "";  // Limpa o campo
+                cpf.placeholder = "CPF deve ter 11 dígitos.";
+            }
 
             return formularioValido;
         }

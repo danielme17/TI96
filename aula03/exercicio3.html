@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem Regressiva</title>
+</head>
+<body>
+  <h1>Contagem Regressiva</h1>
+  <div id="contagem"></div> <!-- Local onde a contagem será exibida -->
+
+  <script>
+
+    // Seleciona o elemento onde a contagem será exibida
+    const elemento_pai = document.getElementById("contagem");
+
+    // Laço de repetição for que conta de 10 até 1
+    for (let i = 10; i >= 1; i--) {
+
+        // Cria um novo elemento de parágrafo (<p>) para cada número
+        const paragrafo = document.createElement("p");
+        paragrafo.textContent = i; // Define o texto do parágrafo como o número atual
+
+        // Adiciona o parágrafo ao elemento de contagem
+        elemento_pai.appendChild(paragrafo);
+        
+    }
+
+  </script>
+</body>
+</html>

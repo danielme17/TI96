@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista com Cores Alternadas</title>
+    <style>
+        /* Estilos para as cores alternadas */
+        .cor1 { color: blue; }
+        .cor2 { color: red; }
+    </style>
+</head>
+<body>
+    <ul id="lista"></ul>
+
+    <script>
+
+        // JS Seleciona o elemento <ul> onde a lista será inserida
+        const lista = document.getElementById('lista');
+
+        // Laço de repetição para gerar 100 itens
+        for (let i = 1; i <= 100; i++) {
+
+            // JS Cria um novo elemento <li>
+            const item = document.createElement('li');
+
+            // Define o conteúdo do item
+            item.textContent = `Item ${i}`;
+
+            // JS Alterna as classes para mudar a cor
+            if (i % 2 === 0) {
+                item.classList.add('cor1'); // Adiciona a classe cor1 para itens pares
+            } else {
+                item.classList.add('cor2'); // Adiciona a classe cor2 para itens ímpares
+            }
+
+            // Adiciona o item à lista
+            lista.appendChild(item);
+        }
+
+        /*
+        Explicação:
+        1. O laço `for` é usado para gerar 100 itens.
+        2. Para cada iteração, um novo elemento <li> é criado.
+        3. O conteúdo do item é definido como "Item X", onde X é o número do item.
+        4. A cor do item é alternada usando classes CSS. Se o número do item for par, ele recebe a classe `cor1`; se for ímpar, recebe a classe `cor2`.
+        5. O item é adicionado à lista (<ul>) usando `appendChild`.
+        */
+    </script>
+</body>
+</html>

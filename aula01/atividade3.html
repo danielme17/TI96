@@ -1,0 +1,90 @@
+<!-- Crie um formulário HTML com campos para nome e email. Adicione uma validação simples que verifica se os campos foram preenchidos antes de enviar o formulário. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema 3</title>
+    <style>
+        /* Estilo básico para o formulário */
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .erro {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulário de Contato</h1>
+    <form onsubmit="return validarFormulario()">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
+        <div id="erroNome" class="erro"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <div id="erroEmail" class="erro"></div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        // Função para validar o formulário
+        function validarFormulario() {
+            // Limpa mensagens de erro anteriores
+            document.getElementById('erroNome').textContent = '';
+            document.getElementById('erroEmail').textContent = '';
+
+            // Validação do campo nome
+            const nome = document.getElementById('nome').value;
+            if (nome === '') {
+                document.getElementById('erroNome').textContent = 'Por favor, insira seu nome.';
+                return false;
+            }
+
+            // Validação do campo email
+            const email = document.getElementById('email').value;
+            if (email === '') {
+                document.getElementById('erroEmail').textContent = 'Por favor, insira seu email.';
+                return false;
+            }
+
+            // Se tudo estiver válido, o formulário é enviado
+            alert('Formulário enviado com sucesso!');
+            return true;
+        }
+    </script>
+</body>
+</html>

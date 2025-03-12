@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 - JS array e function return</title>
+</head>
+<body>
+    <p id="resultado">Resultado vai aparecer aqui</p>
+
+    <button onclick="minhaFuncao()">Executar minhaFuncao</button>
+    <script>
+        function minhaFuncao() 
+        {
+            let lista1 = [1, 10, 100, 1000, 10000];
+
+            // Exibindo o resultado no elemento HTML
+            document.getElementById("resultado").innerHTML = "A soma da lista é: "
+                + SomaLista(lista1);
+        }
+        function SomaLista(lista)
+        {
+            let soma = 0;
+            for (let i = 0; i < lista.length; i++) {
+                soma += lista[i];
+            }
+            return soma;
+        }
+    </script>
+</body>
+</html>

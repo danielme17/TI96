@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 - JS parametros</title>
+</head>
+<body>
+    <!-- Campos de entrada -->
+    <input type="number" id="numero1" placeholder="Numero1">
+    <input type="number" id="numero2" placeholder="Numero2">
+    <p id="resultado">Resultado vai aparecer aqui</p>
+    <button onclick="minhaFuncao()">Somar</button>
+    
+    <script>
+        // Função para pegar os valores dos inputs, calcular a soma e exibir no HTML
+        function minhaFuncao() {
+            // Pegando os valores dos inputs e convertendo para números
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+
+            // Exibindo o resultado no elemento HTML
+            document.getElementById("resultado").innerHTML = 
+                "A soma de " + numero1 + " e " + numero2 + " é: " + (numero1 + numero2);
+        }
+    </script>
+</body>
+</html>

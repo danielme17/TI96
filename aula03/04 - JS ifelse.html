@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula07</title>
+</head>
+<body>
+    <p id="resultado">Resultado vai aparecer aqui</p>
+    <button onclick="minhaFuncao()">Executar minhaFuncao</button>
+    
+    <script>
+        // Função para pegar os valores dos inputs, calcular a soma e exibir no HTML
+        function minhaFuncao() 
+        {
+            let minutos = (new Date()).getMinutes(); // Pega os minutos
+            if((minutos % 2) == 0) //entra se for par
+            {
+                alert('o minuto atual (' + minutos + ') é par');
+            }
+            else
+            {
+                alert('o minuto atual (' + minutos + ') é impar');
+            }
+
+            // Exibindo o resultado no elemento HTML
+            document.getElementById("resultado").innerHTML = 
+                'o minuto atual (' 
+                + minutos 
+                + ') é ' 
+                + (((minutos % 2) == 0) ? 'par' : 'impar')
+                ;
+        }
+    </script>
+</body>
+</html>

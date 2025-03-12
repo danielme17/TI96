@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 - JS string</title>
+</head>
+<body>
+    <!-- Campos de entrada -->
+    <input type="text" id="txt1" placeholder="Texto 1">
+    <input type="text" id="txt2" placeholder="Texto 2">
+    <p id="resultado">Resultado vai aparecer aqui</p>
+    <button onclick="minhaFuncao()">Executar minhaFuncao</button>
+    
+    <script>
+        // Função para pegar os valores dos inputs, calcular a soma e exibir no HTML
+        function minhaFuncao() 
+        {
+            let txt1 = document.getElementById("txt1").value;
+            let txt2 = document.getElementById("txt2").value;
+
+            // Exibindo o resultado no elemento HTML
+            document.getElementById("resultado").innerHTML = 
+                "Segue a concatenação de " + txt1 + " " + txt2;
+        }
+    </script>
+</body>
+</html>

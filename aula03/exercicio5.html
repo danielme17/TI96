@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha Dinâmica</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .cor1{
+            background-color:lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Planilha Dinâmica</h1>
+    <div id="spreadsheet"></div>
+
+    <script>
+    function criarPlanilha(linhas, colunas) {
+        const container = document.getElementById('spreadsheet');
+        const table = document.createElement('table');
+    
+        // Cria o cabeçalho da tabela
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        for (let j = 0; j <= colunas; j++) {
+            const th = document.createElement('th');
+            if (j === 0) {
+                th.textContent = ''; // Canto superior esquerdo vazio
+            } else {
+                th.textContent = String.fromCharCode(64 + j); // Colunas A, B, C, etc.
+            }
+            headerRow.appendChild(th);
+        }
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+    
+        // Cria o corpo da tabela
+        const tbody = document.createElement('tbody');
+        for (let i = 1; i <= linhas; i++) {
+            const row = document.createElement('tr');
+            // Adiciona o número da linha
+            const rowHeader = document.createElement('th');
+            rowHeader.textContent = i;
+            row.appendChild(rowHeader);
+    
+            // Adiciona as células
+            for (let j = 1; j <= colunas; j++) {
+                const cell = document.createElement('td');
+                cell.setAttribute('contenteditable', 'true'); // Permite edição
+                row.appendChild(cell);
+            }
+            tbody.appendChild(row);
+            // JS Alterna as classes para mudar a cor
+            if (i % 2 === 0) {
+                row.classList.add('cor1'); // Adiciona a classe cor1 para itens pares
+            } else {
+                //row.classList.add('cor2'); // Adiciona a classe cor2 para itens ímpares
+            }
+        }
+        table.appendChild(tbody);
+    
+        container.appendChild(table);
+    }
+    
+    // Exemplo de uso
+    criarPlanilha(50, 600);
+
+    </script>
+</body>
+</html>

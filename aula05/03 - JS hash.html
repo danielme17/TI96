@@ -40,7 +40,7 @@
 <body>
 
     <h1>Cadastro de Cliente</h1>
-    <form id="formCadastro" onsubmit="return validarFormulario()">
+    <form id="formCadastro" method="dialog">
         <label for="nome_cliente">Nome Completo:</label>
         <input type="text" id="nome_cliente" name="nome_cliente" placeholder="Digite seu nome completo">
 
@@ -56,10 +56,31 @@
         <label for="cpf">CPF:</label>
         <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" maxlength="11">
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit" onclick="return validarFormulario()">Cadastrar</button>
+        <button type="submit" onclick="return calcHash()">Calcula Hash</button>
+
+        <span id="resultado"></span>
     </form>
 
     <script>
+        function calcHash()
+        {
+            // Converte a string para um array de bytes (UTF-8)
+            const encoder = new TextEncoder();
+            const data = encoder.encode(
+                document.getElementById("nome_cliente").value
+            );
+
+            // Calcula o hash SHA-256
+            const hashBuffer = crypto.subtle.digest('SHA-256', data);
+
+            // Converte o hash para uma string hexadecimal
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+            // Exibe o resultado
+            document.getElementById('resultado').textContent = `Hash SHA-256: ${hashHex}`;
+        }
         function validarFormulario() {
             // Resetando mensagens de erro e removendo classes de erro
             resetarErros();

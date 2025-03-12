@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validação de Cadastro</title>
+  <style>
+    .error {
+      color: red;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form id="formCadastro">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" maxlength="50" placeholder="Digite seu nome">
+    <br><br>
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" placeholder="Digite seu CPF">
+    <br><br>
+    <!-- HTML Capturar o evento click -->
+    <button type="button" onclick="validarCadastro()">Cadastrar</button>
+    <span id="mensagemErro" class="error"></span>
+  </form>
+
+  <script>
+  function validarCadastro() {
+    let nome = document.getElementById("nome").value.trim();
+    let cpf = document.getElementById("cpf").value.trim();
+  
+    // Limpar mensagens de erro anteriores
+    document.getElementById("mensagemErro").textContent = "";
+  
+    // Validar Nome
+    if (nome.length == 0) {
+        document.getElementById("mensagemErro").textContent = "O nome é obrigatório.";
+        return;
+    }
+  
+    if (nome.length > 50) {
+        document.getElementById("mensagemErro").textContent = "O nome deve ter no máximo 50 caracteres.";
+        return;
+    }
+  
+    // Validar CPF
+    let cpfLimpo = cpf.replaceAll(".", ""); // Remove caracteres não numéricos
+    cpfLimpo = cpfLimpo.replaceAll("-", ""); // Remove caracteres não numéricos
+  
+    if (cpfLimpo.length == 0) {
+        mensagemErro.textContent = "O CPF é obrigatório.";
+        return;
+    }
+  
+    if (!/^\d+$/.test(cpfLimpo)) {
+      mensagemErro.textContent = "O CPF deve conter apenas números.";
+      return;
+    }
+  
+    if (cpfLimpo.length != 11) {
+      mensagemErro.textContent = "O CPF deve ter 11 dígitos.";
+      return;
+    }
+  
+    // Se todas as validações passarem
+    alert("Cadastro válido! Nome: " + nome + ", CPF: " + cpfLimpo);
+  }
+  </script>
+
+<h1>Bem-vindo!</h1>
+<p>Este é um parágrafo.</p>
+
+</body>
+</html>

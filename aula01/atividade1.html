@@ -1,0 +1,36 @@
+<!-- Crie uma página HTML que contenha um título, um parágrafo e um botão. Quando o botão for clicado, o texto do parágrafo deve mudar. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema 1</title>
+    <style>
+        /* Estilo básico para o parágrafo */
+        p {
+            font-size: 18px;
+            color: blue;
+        }
+
+        /* Estilo para o botão */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao Problema 1</h1>
+    <p id="texto">Este é o texto inicial.</p>
+    <button onclick="mudarTexto()">Clique aqui</button>
+
+    <script>
+        // Função para mudar o texto do parágrafo
+        function mudarTexto() {
+            // Seleciona o elemento pelo ID e altera o texto
+            document.getElementById('texto').textContent = 'O texto foi alterado!';
+        }
+    </script>
+</body>
+</html>
